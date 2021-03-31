@@ -1,5 +1,7 @@
 package in.sanvic.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,11 +37,17 @@ public class ContactInfoController {
 	
 	@PostMapping("/save-contact")
 	public String handleSubmitButton(Contact contact, Model model, RedirectAttributes redirectAttributes) {
-		System.out.println(contact);
-		
+		String status = "";
+		if(contact.getContactId()==null)
+			status = "save";
+		else
+			status = "update";
 		Boolean isSaved = service.saveContact(contact);
 		if(isSaved) {
+			if(status.equals("save"))
 			redirectAttributes.addFlashAttribute("succMsg", "Contact Saved..!!");
+			else if(status.equals("update"))
+				redirectAttributes.addFlashAttribute("succMsg", "Contact Updated..!!");
 		}
 		else {
 			redirectAttributes.addFlashAttribute("failedMsg", "Failed to save contact..!!");
@@ -55,8 +63,11 @@ public class ContactInfoController {
 		 return "Contact";
 	 }
 	
-	public String handleViewContactHyperlink(){
+	 @GetMapping("/view-contacts")
+	public String handleViewContactHyperlink(Model model){
+		List<Contact> allContacts = service.getAllContacts();
+		model.addAttribute("contacts", allContacts);
 		
-		return "Contact";
+		return "contacts-display";
 	}
 }

@@ -11,7 +11,7 @@
 <body>
 	<h3> Contact Info </h3>
 	<font color="green"> ${succMsg} </font>
-	<form:form action = "save-contact" method = "POST" modelAttribute="contact">
+	<form:form action = "save-contact?contactId=${contact.contactId }" method = "POST" modelAttribute="contact">
 	
 	<table>
 		<tr>
@@ -45,6 +45,6 @@
 	
 	</form:form>
 	
-	<a href = "#">View All Contacts</a>
+	<a href = "view-contacts">View All Contacts</a>
 </body>
 </html>
