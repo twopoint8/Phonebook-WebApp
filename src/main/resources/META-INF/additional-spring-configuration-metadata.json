@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "phonebook.messages.contactDeleteFailMsg",
+  "type": "java.lang.String",
+  "description": "A description for 'phonebook.messages.contactDeleteFailMsg'"
+}]}

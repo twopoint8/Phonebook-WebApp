@@ -21,21 +21,9 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public Boolean saveContact(Contact contact) {
-		// TODO Auto-generated method stub
+	
 		Contact savedObj = contactRepositiry.save(contact);
 
-//		  if(savedObj.getContactId()!=null){
-//			  return true; 
-//			  } 
-//		  else { 
-//			  return false; 
-//			  }
-
-		/*--------------------- OR -----------------*/
-
-		// return (savedObj.getContactId() != null) ? true : false;
-
-		/*--------------------- OR -----------------*/
 
 		return savedObj.getContactId() != null;
 
@@ -43,18 +31,13 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> getAllContacts() {
-		// TODO Auto-generated method stub
-//		List<Contact> contactList = contactRepositiry.findAll();
-//		return contactList;
-
-		/*--------------------- OR -----------------*/
 
 		return contactRepositiry.findAll();
 	}
 
 	@Override
 	public Contact getContactById(Integer contactId) {
-		// TODO Auto-generated method stub
+		
 		Optional<Contact> contact = contactRepositiry.findById(contactId);
 		if (contact.isPresent()) {
 			return contact.get();
@@ -64,7 +47,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public Boolean deleteContactById(Integer contactId) {
-		// TODO Auto-generated method stub
+		
 		Boolean isDeleted = false;
 		try {
 			contactRepositiry.deleteById(contactId);
