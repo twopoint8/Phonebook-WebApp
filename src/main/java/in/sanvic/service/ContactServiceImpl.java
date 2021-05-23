@@ -23,7 +23,7 @@ public class ContactServiceImpl implements ContactService {
 	public Boolean saveContact(Contact contact) {
 	
 		Contact savedObj = contactRepositiry.save(contact);
-
+		System.out.println("Contact Saved....");
 
 		return savedObj.getContactId() != null;
 
